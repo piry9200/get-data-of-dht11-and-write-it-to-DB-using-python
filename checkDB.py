@@ -7,3 +7,7 @@ cur = conn.cursor()
 cur.execute("SELECT * FROM data")
 dates = cur.fetchall()
 print(dates)
+
+cur.execute("SELECT COUNT(*) FROM data")
+count = cur.fetchall()
+print(f"行数:{count}")
