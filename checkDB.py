@@ -10,4 +10,4 @@ print(dates)
 
 cur.execute("SELECT COUNT(*) FROM data")
 count = cur.fetchall()
-print(f"行数:{count}")
+print(f"行数:{count[0][0]}")
