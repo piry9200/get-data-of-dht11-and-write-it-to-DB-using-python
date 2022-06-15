@@ -1,5 +1,5 @@
 import RPi.GPIO as GPIO
-from DHT11 import dht11
+import dht11
 import time
 import datetime
 
