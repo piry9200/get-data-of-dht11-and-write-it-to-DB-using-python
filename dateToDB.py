@@ -2,6 +2,7 @@ import RPi.GPIO as GPIO
 from DHT11 import dht11
 import time
 import datetime
+import sqlite3
 
 # initialize GPIO
 GPIO.setwarnings(True)
@@ -51,13 +52,4 @@ except KeyboardInterrupt:
     print("Cleanup")
     GPIO.cleanup()
 
-conn.close()t valid input: " + str(datetime.datetime.now()))
-
-	        print("Temperature: %-3.1f C" % result.temperature)
-	        print("Humidity: %-3.1f %%" % result.humidity)
-
-	    time.sleep(6)
-
-except KeyboardInterrupt:
-    print("Cleanup")
-    GPIO.cleanup()
+conn.close()
