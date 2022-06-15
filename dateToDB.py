@@ -24,7 +24,7 @@ if count_row[0][0] == 0: #行数が0(初回時)だったらidは1から始める
 else: #すでにデータがあるときは既にある行数に1を足した行数からデータを入力
 	id = count_row[0][0] + 1
 	print(f"test:{id}")
-	if id == 21: #行数が20行あって21行目になったら、idを1として一行目に帰る
+	if id == 21: #開始時、whileに入る前に行数が20行あって次が21行目だったら、idを1として一行目に帰る
 		id = 1
 
 try:
@@ -35,10 +35,16 @@ try:
 			print("Temperature: %-3.1f C" % result.temperature)
 			print("Humidity: %-3.1f %%" % result.humidity)
 			cur.execute(f"INSERT INTO data VALUES (?, ?, ?, ?)", [id, str(datetime.datetime.now()), result.temperature, result.humidity])
-			id = id + 1
 			conn.commit()
+			cur.execute("SELECT COUNT(*) FROM data") #データを追加した後の行数を取得
+			count_row = cur.fetchall()
+			if count_row[0][0] < 20:
+				id = id + 1
+			else:
+				id = 1
 
-	time.sleep(6)
+
+		time.sleep(6)
 
 except KeyboardInterrupt:
 	print("Cleanup")
