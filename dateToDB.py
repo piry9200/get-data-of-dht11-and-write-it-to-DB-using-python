@@ -11,12 +11,18 @@ GPIO.setmode(GPIO.BCM)
 # read data using pin 14
 instance = dht11.DHT11(pin=14)
 
-id = 1
 DATABASE = "dateTempHumi.db"
 
 conn = sqlite3.connect(DATABASE)
 cur = conn.cursor()
-cur.execute("CREATE TABLE IF NOT EXISTS data (id,date, temp, humi)")
+cur.execute("CREATE TABLE IF NOT EXISTS data (id,date, temp, humi)") #初回時テーブル作成
+
+cur.execute("SELECT COUNT(*) FROM data")
+count_row = cur.fetchall() #行数を取得　リストにタプルが入っている形式で取得
+if count_row[0][0] == 0: #行数が0(初回時)だったらidは1から始める。
+	id = 1
+else: #すでにデータがあるときは既にある行数に1を足した行数からデータを入力
+	id = count_row[0][0] + 1
 
 try:
 	while True:
