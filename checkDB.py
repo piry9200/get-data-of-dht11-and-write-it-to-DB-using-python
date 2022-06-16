@@ -6,7 +6,8 @@ cur = conn.cursor()
 
 cur.execute("SELECT * FROM data")
 dates = cur.fetchall()
-print(dates)
+for date in dates:
+    print(date)
 
 cur.execute("SELECT COUNT(*) FROM data")
 count = cur.fetchall()
