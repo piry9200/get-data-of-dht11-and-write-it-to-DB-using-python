@@ -33,7 +33,7 @@ try:
             cur.execute("SELECT COUNT(*) FROM data")
             numOfRecords = cur.fetchall() #numOfRecordsに現在のレコード数を代入
             if numOfRecords[0][0] < 20: #-----行数が20未満だったら普通にデータをインサート-----
-                cur.execute(f"INSERT INTO data VALUES (?, ?, ?, ?)", [id, str(datetime.datetime.now()), result.temperature, result.humidity])
+                cur.execute("INSERT INTO data VALUES (?, ?, ?, ?)", [id, str(datetime.datetime.now()), result.temperature, result.humidity])
                 id = id + 1
                 conn.commit()
             else: #----既に行数が20ある場合---
@@ -41,7 +41,7 @@ try:
                 cur.execute("DELETE FROM data WHERE id=1") #idが１の行を削除
                 for i in range(1,20): #-----idを前に詰める----
                     cur.execute("UPDATE data SET id = ? WHERE id= ?", [i, i+1])
-                cur.execute(f"INSERT INTO data VALUES (?, ?, ?, ?)", [id, str(datetime.datetime.now()), result.temperature, result.humidity])
+                cur.execute("INSERT INTO data VALUES (?, ?, ?, ?)", [id, str(datetime.datetime.now()), result.temperature, result.humidity])
                 conn.commit()
 
                 
