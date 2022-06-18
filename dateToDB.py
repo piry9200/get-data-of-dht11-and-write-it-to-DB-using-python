@@ -11,7 +11,7 @@ GPIO.setmode(GPIO.BCM)
 # read data using pin 14
 instance = dht11.DHT11(pin=14)
 
-DATABASE = "dateTempHumi.db"
+DATABASE = "/home/pi/pri_prg/dht11_python_db/dateTempHumi.db"
 
 conn = sqlite3.connect(DATABASE)
 cur = conn.cursor()
