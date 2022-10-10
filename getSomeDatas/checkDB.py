@@ -1,5 +1,5 @@
 import sqlite3
-DATABASE = "/home/pi/pri_prg/dht11_python_db/getSomeDatas/dateTempHumi.db"
+DATABASE = "/var/www/html/dht11_python_db/getSomeDatas/dateTempHumi.db"
 
 conn = sqlite3.connect(DATABASE)
 cur = conn.cursor()
