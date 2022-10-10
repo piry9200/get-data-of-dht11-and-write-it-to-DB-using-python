@@ -33,7 +33,7 @@ try:
         cur.execute("SELECT COUNT(*) FROM data")
         numOfRecords = cur.fetchall() #numOfRecordsに現在のレコード数を代入
         if numOfRecords[0][0] < 720: #-----行数が720未満だったら普通にデータをインサート-----
-            cur.execute("INSERT INTO data VALUES (?, ?, ?, ?)", [id, now.strftime("%H:%M"), result.temperature, result.humidity]])
+            cur.execute("INSERT INTO data VALUES (?, ?, ?, ?)", [id, now.strftime("%H:%M"), result.temperature, result.humidity])
             id = id + 1
             conn.commit()
         else: #----既に行数が720ある場合---
