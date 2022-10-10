@@ -1,6 +1,6 @@
 import sqlite3
 import json
-DATABASE = "/home/pi/pri_prg/dht11_python_db/getSomeDatas/dateTempHumi.db"
+DATABASE = "/var/www/html/dht11_python_db/getSomeDatas/dateTempHumi.db"
 
 dic = {}
 conn = sqlite3.connect(DATABASE)
@@ -27,17 +27,17 @@ for i in range(0,numOfdate[0][0]):
 
 dictOfTemp = {}
 for i in range(0, numOftemp[0][0]):
-	dictOfTemp[i] = str(temps[i][0]) + '°C'
+	dictOfTemp[i] = str(temps[i][0])
 
 dictOfHumi = {}
 for i in range(0, numOftemp[0][0]):
-	dictOfHumi[i] = str(humis[i][0]) + '%'
+	dictOfHumi[i] = str(humis[i][0])
 
 dictOfAll={'date' : dictOfDate,        # {[date、temperature、humidityをキーにもち]、[それぞれの要素に「idをキーに持ち,値を要素として持つ」オブジェクト]}
            'temperature' : dictOfTemp,
            'humidity' : dictOfHumi
           }
-with open("/home/pi/pri_prg/dht11_python_db/getSomeDatas/jsonOfAlldata.json","w")as f:
+with open("/var/www/html/dht11_python_db/getSomeDatas/jsonOfAlldata.json","w")as f:
 	json.dump(dictOfAll, f, ensure_ascii=False, indent=4)
 
 #print(dictOfDate)
