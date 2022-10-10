@@ -1,6 +1,6 @@
 console.log("てすと");
 async function referJsonOfTempre(){
-    const response = await fetch('http://192.168.1.200/dht11_python_db_copy/getSomeDatas/jsonOfAlldata.json');//ポート番号いらない
+    const response = await fetch('http://192.168.1.200/dht11_python_db/getSomeDatas/jsonOfAlldata.json');//ポート番号いらない
 	const json = await response.json();
 
 	const ctx = document.querySelector('#chart');
