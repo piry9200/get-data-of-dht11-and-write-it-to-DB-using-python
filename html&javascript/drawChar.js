@@ -1,6 +1,10 @@
 async function referJsonOfTempre(){
-	const response = await fetch('http://192.168.1.200:80/../getSomeDatas/jsonOfAlldata.json');
-	const json = await response.json();
+	try{
+        const response = await fetch('http://192.168.1.200:80/../getSomeDatas/jsonOfAlldata.json');
+        const json = await response.json();
+    } catch(err){
+        console.error(err);
+    }
 
 	const ctx = document.querySelector('#chart');
 	const chart = new Chart(ctx, {
