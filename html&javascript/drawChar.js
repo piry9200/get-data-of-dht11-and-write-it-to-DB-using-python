@@ -38,8 +38,8 @@ async function referJsonOfTempre(){
 
 	//*3 湿度のdataの配列を作る
     let arrayOfhumi = [];
-    for(let i=0; i<Object.keys(json.temperature).length; i++){ //Object.keys(json.temperature).lengthはオブジェクト'json.temperature'の要素数を返す
-            arrayOfhumi.push(json.temperature[i]);
+    for(let i=0; i<Object.keys(json.humidity).length; i++){ //Object.keys(json.humidity).lengthはオブジェクト'json.humidity'の要素数を返す
+            arrayOfhumi.push(json.humidity[i]);
     }
     chart.data.datasets[1].data = arrayOfhumi;
 
